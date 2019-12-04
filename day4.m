@@ -11,10 +11,12 @@ for i = input:1:input(end)
     %har den identiska tal?
     equal = 0;
     for j = 1:5
+        % Avbryt om nuvarande är större än nästa
         if str2double(current(j)) > str2double(current(j+1))
             equal = 0;
             break
         end
+        %sätt equal till 1 om två på varandra följande siffror är likadana
         if str2double(current(j)) == str2double(current(j+1))
             equal = 1;
         end
