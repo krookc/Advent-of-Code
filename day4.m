@@ -9,11 +9,12 @@ for i = input:1:input(end)
     current = split(string(i),"");
     current = current(2:7);
     %har den identiska tal?
+    dec = 0;
     equal = 0;
     for j = 1:5
         % Avbryt om nuvarande är större än nästa
-        if str2double(current(j)) > str2double(current(j+1))
-            equal = 0;
+        if str2double(current(j+1)) < str2double(current(j))
+            dec = 1;
             break
         end
         %sätt equal till 1 om två på varandra följande siffror är likadana
@@ -22,9 +23,10 @@ for i = input:1:input(end)
         end
     end
     
-    if equal
+    if equal && not(dec)
         %bygger lång sträng med resultaten
         valids = valids + string(i) + ",";
     end
 end
+passwords = split(string(valids), ",") ;
 length_passwords = length(split(string(valids), ","));
