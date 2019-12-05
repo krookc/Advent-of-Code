@@ -83,14 +83,8 @@ while true
         
         if param2 == position
             x2 = data(data(pointer+2)+1);
-            if x2 == 99999
-                x2
-            end
         elseif param2 == immediate
             x2 = data(pointer+2);
-            if x2 == 99999
-                x2
-            end
         end
         
         if x1 ~= 0
@@ -107,14 +101,8 @@ while true
         
         if param2 == position
             x2 = data(data(pointer+2)+1);
-            if x2 == 99999
-                x2
-            end
         elseif param2 == immediate
             x2 = data(pointer+2);
-            if x2 == 99999
-                x2
-            end
         end
         
         if x1 == 0
@@ -131,14 +119,8 @@ while true
         
         if param2 == position
             x2 = data(data(pointer+2)+1);
-            if x2 == 99999
-                x2
-            end
         elseif param2 == immediate
             x2 = data(pointer+2);
-            if x2 == 99999
-                x2
-            end
         end
         
         if x1 < x2
@@ -156,14 +138,8 @@ while true
         
         if param2 == position
             x2 = data(data(pointer+2)+1);
-            if x2 == 99999
-                x2
-            end
         elseif param2 == immediate
             x2 = data(pointer+2);
-            if x2 == 99999
-                x2
-            end
         end
         
         if x1 == x2
