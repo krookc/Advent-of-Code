@@ -67,10 +67,53 @@ public class Main {
 		}
 
 		System.out.println(this.getDirect()+this.indirectroutes);
+		
+		this.part2();
 	}
 
 	public int getDirect() {
 		return planets.size()-1;
+	}
+	
+	public void part2() {
+		Planet YOU = null;
+		Planet SAN = null;
+		for (Planet pp : planets) {
+			if (pp.name.equals("SAN")) {
+				SAN = pp;
+			}
+			if (pp.name.equals("YOU")) {
+				YOU = pp;
+			}
+		}
+		Planet start = YOU.getParent();
+		Planet end = SAN.getParent();
+		
+		List<Planet> YouParents = new ArrayList<Planet>();
+		List<Planet> SanParents = new ArrayList<Planet>();
+		
+		Planet temp = YOU;
+		while (temp != null) {
+			YouParents.add(temp.getParent());
+			temp = temp.getParent();
+		}
+		Planet temp1 = SAN;
+		while (temp1 != null) {
+			SanParents.add(temp1.getParent());
+			
+			temp1 = temp1.getParent();
+		}
+		Planet closest = null;
+		for (Planet p : YouParents) {
+			if (SanParents.contains(p)){
+				closest = p;
+				break;
+			}
+		}
+		
+		int dist1 = YouParents.indexOf(closest);
+		int dist2 = SanParents.indexOf(closest);
+		System.out.println(dist1+dist2);
 	}
 
 	public int getIndirect(Planet p) {
