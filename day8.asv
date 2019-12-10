@@ -1,13 +1,13 @@
 clc; clear all; close all;
 
 data = fileread('day8input.txt');
-% data = '0222112222120000';
+% data = '123456789012';
 width = 25;
 height = 6;
 layer_size = width*height;
 number_of_layers = length(data)/layer_size;
 
-layers = zeros(height * number_of_layers, width);
+layers = zeros(height * number_of_layers, 25);
 
 layer_nr = 0;
 
@@ -33,7 +33,7 @@ end
 mini = min(sums);
 index = find(sums == mini);
 
-min_layer = layers((height*(index-1)+1):(height*(index-1)+height), 1:width);
+min_layer = layers((height*(index-1)+1):(height*(index-1)+height), 1:25);
 
 onee = sum(sum(min_layer==1));
 twoo = sum(sum(min_layer==2));
@@ -41,21 +41,12 @@ answer = onee*twoo;
 
 finalimage = layers(1:height, 1:width);
 for k = 0:1:(number_of_layers-1)
-    for j = 1:1:height
-        for i = 1:1:width
-            if finalimage(j,i) ~= 0
-                if finalimage(j,i) ~= 1
-                    finalimage(j,i) = layers(k*height+j, i);
-                end
+    for i = 1:1:height
+        for j = 1:1:width
+            if finalimage(i,j) ~= 0
+                finaliamge(i,j) == layers(k*height+i, k*w);
             end
         end
     end
 end
 
-stri = "";
-for j = 1:1:height
-    for i = 1:1:width
-        stri = stri + num2str(finalimage(j,i));
-    end
-end
-imagesc(finalimage)
