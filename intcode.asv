@@ -75,9 +75,7 @@ while true
             pointer = pointer + 2;
             index = index +1;
             else
-                data(data(pointer+1)+relative_base) = input;
-                pointer = pointer +2;
-                index = index+1;
+                
             end
         elseif index ~= 0
             data(data(pointer+1)+1) = input2;

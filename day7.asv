@@ -4,7 +4,7 @@ clc; clear all; close all;
 clc; clear all; close all;
 
 data = load('day7input.txt');
-% data = load('temp.txt');
+data = load('temp.txt');
 % data = '3,15,3,16,1002,16,10,16,1,16,15,15,4,15,99,0,0';
 % data=[3 15 3 16 1002 16 10 16 1 16 15 15 4 15 99 0 0];
 inputs = "";
@@ -30,8 +30,8 @@ for i= 5:1:9
 end
 
 
-inputs = split(inputs, ",");
-% inputs = "97856";
+% inputs = split(inputs, ",");
+inputs = "97856";
 temp = 0;
 
 outputs = [];
@@ -66,8 +66,8 @@ outputs = [];
 % end
 
 %feedback loop
-outputs = ones(1, length(inputs));
-for i = 1:1:length(inputs)-1
+
+for i = 1:1:length(inputs)
     temp = char(inputs(i));
     ap = str2num(temp(1));
     bp = str2num(temp(2));
@@ -82,15 +82,11 @@ for i = 1:1:length(inputs)-1
     [emachine, eo, eindex, epointer, eopc] = intcode(data, ep, do, 0, 1);
     
     while eopc ~= 99
-        outputs(i) = eo;
         [amachine, ao, aindex, apointer, aopc] = intcode(amachine, ap, eo, aindex, apointer);
         [bmachine, bo, bindex, bpointer, bopc] = intcode(bmachine, bp, ao, bindex, bpointer);
         [cmachine, co, cindex, cpointer, copc] = intcode(cmachine, cp, bo, cindex, cpointer);
         [dmachine, do, dindex, dpointer, dopc] = intcode(dmachine, dp, co, dindex, dpointer);
         [emachine, eo, eindex, epointer, eopc] = intcode(emachine, ep, do, eindex, epointer);
-        
     end
-    
 end
 
-answer = max(outputs);
